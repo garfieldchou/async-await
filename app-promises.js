@@ -53,7 +53,7 @@ const getStatus = (userId) => {
       average = grades.map((grade) => grade.grade).reduce((a, b) => a + b) / grades.length;
     }
 
-    console.log(average);
+    return `${user.name} has a ${average}% in the class.`;
   });
 };
 
