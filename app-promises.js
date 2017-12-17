@@ -40,8 +40,25 @@ const getGrades = (schoolId) => {
   });
 };
 
-getGrades(101).then((grades) => {
-  console.log(grades);
+// Andrew has a 83% in the class
+const getStatus = (userId) => {
+  let user;
+  return getUser(userId).then((tempUser) => {
+    user = tempUser;
+    return getGrades(user.schoolId);
+  }).then((grades) => {
+    let average = 0;
+
+    if (grades.length > 0) {
+      average = grades.map((grade) => grade.grade).reduce((a, b) => a + b) / grades.length;
+    }
+
+    console.log(average);
+  });
+};
+
+getStatus(1).then((status) => {
+  console.log(status);
 }).catch((e) => {
   console.log(e);
 });
