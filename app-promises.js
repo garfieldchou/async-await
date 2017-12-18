@@ -59,11 +59,12 @@ const getStatus = (userId) => {
 
 const getStatusAlt = async (userId) => {
   const user = await getUser(userId);
+  const grades = await getGrades(user.schoolId);
 
-  console.log(user);
+  console.log(user, grades);
 };
 
-getStatusAlt(5).then((name) => {
+getStatusAlt(1).then((name) => {
   console.log(name);
 }).catch((e) => {
   console.log(e);
