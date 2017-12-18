@@ -57,20 +57,13 @@ const getStatus = (userId) => {
   });
 };
 
-// equivalent:
-//
-// () => {
-//   return new Promise((resolve, reject) => {
-//     reject('This is an error');
-//   })
-// };
-
 const getStatusAlt = async (userId) => {
-  throw new Error('This is an error');
-  return 'Mike';
+  const user = await getUser(userId);
+
+  console.log(user);
 };
 
-getStatusAlt().then((name) => {
+getStatusAlt(2).then((name) => {
   console.log(name);
 }).catch((e) => {
   console.log(e);
