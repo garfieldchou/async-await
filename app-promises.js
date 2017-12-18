@@ -57,7 +57,15 @@ const getStatus = (userId) => {
   });
 };
 
-const getStatusAlt = (userId) => {
+// equivalent:
+//
+// () => {
+//   return new Promise((resolve, reject) => {
+//     resolve('Mike');
+//   })
+// };
+
+const getStatusAlt = async (userId) => {
   return 'Mike';
 };
 
