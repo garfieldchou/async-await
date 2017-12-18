@@ -61,16 +61,19 @@ const getStatus = (userId) => {
 //
 // () => {
 //   return new Promise((resolve, reject) => {
-//     resolve('Mike');
+//     reject('This is an error');
 //   })
 // };
 
 const getStatusAlt = async (userId) => {
+  throw new Error('This is an error');
   return 'Mike';
 };
 
 getStatusAlt().then((name) => {
   console.log(name);
+}).catch((e) => {
+  console.log(e);
 });
 
 // getStatus(1).then((status) => {
