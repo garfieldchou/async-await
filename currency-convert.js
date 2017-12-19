@@ -16,12 +16,14 @@ const getCountries = (currencyCode) => {
 };
 
 const convertCurrency = (from, to, amount) => {
-  return getCountries(to).then((countries) => {
+  let countries;
+  return getCountries(to).then((tempCountries) => {
+    countries = tempCountries;
     return getExchangeRate(from, to);
   }).then((rate) => {
     const exchangeAmount = amount * rate;
 
-    return `${amount} ${from} is worth ${exchangeAmount} ${to}.`;
+    return `${amount} ${from} is worth ${exchangeAmount} ${to}. ${to} can be used in the following countries: ${countries.join(', ')}`;
   })
 };
 
