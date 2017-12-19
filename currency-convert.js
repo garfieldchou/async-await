@@ -9,6 +9,12 @@ const getExchangeRate = (from, to) => {
   });
 };
 
-getExchangeRate('USD', 'CAD').then((rate) => {
-  console.log(rate);
+const getCountries = (currencyCode) => {
+  return axios.get(`https://restcountries.eu/rest/v2/currency/${currencyCode}`).then((response) => {
+    return response.data.map((country) => country.name);
+  });
+};
+
+getCountries('USD').then((countries) => {
+  console.log(countries);
 });
