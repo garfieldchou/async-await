@@ -33,6 +33,8 @@ const convertCurrencyAlt = async (from, to, amount) => {
   return `${amount} ${from} is worth ${exchangedAmount} ${to}. ${to} can be used in the following countries: ${countries.join(', ')}`;
 };
 
-convertCurrencyAlt('USD', 'CAD', 100).then((status) => {
+convertCurrencyAlt('USD', 'MMM', 100).then((status) => {
   console.log(status);
+}).catch((e) => {
+  console.log(e);
 });
