@@ -40,14 +40,14 @@ const convertCurrency = (from, to, amount) => {
 };
 
 const convertCurrencyAlt = async (from, to, amount) => {
-  // const countries = await getCountries(to);
+  const countries = await getCountries(to);
   const rate = await getExchangeRate(from, to);
-  // const exchangedAmount = amount * rate;
+  const exchangedAmount = amount * rate;
 
-  // return `${amount} ${from} is worth ${exchangedAmount} ${to}. ${to} can be used in the following countries: ${countries.join(', ')}`;
+  return `${amount} ${from} is worth ${exchangedAmount} ${to}. ${to} can be used in the following countries: ${countries.join(', ')}`;
 };
 
-convertCurrencyAlt('USD', 'MMM', 100).then((status) => {
+convertCurrencyAlt('USD', 'EUR', 100).then((status) => {
   console.log(status);
 }).catch((e) => {
   console.log(e.message);
