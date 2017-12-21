@@ -6,7 +6,13 @@ const axios = require('axios');
 const getExchangeRate = async (from, to) => {
   try {
     const response = await axios.get(`http://api.fixer.io/latest?base=${from}`);
-    return response.data.rates[to];
+    const rate = response.data.rates[to];
+
+    if (rate) {
+      return rate;
+    } else {
+      throw new Error();
+    }
   } catch(e) {
     throw new Error(`Unable to get exchange rate for ${from} and ${to}`);
   }
@@ -41,7 +47,7 @@ const convertCurrencyAlt = async (from, to, amount) => {
   // return `${amount} ${from} is worth ${exchangedAmount} ${to}. ${to} can be used in the following countries: ${countries.join(', ')}`;
 };
 
-convertCurrencyAlt('QWE', 'MMM', 100).then((status) => {
+convertCurrencyAlt('USD', 'MMM', 100).then((status) => {
   console.log(status);
 }).catch((e) => {
   console.log(e.message);
